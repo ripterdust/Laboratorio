@@ -18,3 +18,16 @@ def home(request):
     context = {'entity': laboratories, 'paginator': paginator}
 
     return render(request, 'laboratories.html', context)
+
+@login_required
+def delete(request, id):
+    Laboratory.objects.get(id = id).delete()
+    return redirect('/laboratories')
+
+@login_required
+def edit(request, id):
+    laboratory = Laboratory.objects.get(id = id)
+
+    context = {'client': laboratory}
+
+    return render(request, 'edit_lab.html', context)

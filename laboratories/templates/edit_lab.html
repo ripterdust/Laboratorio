@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+<div></div>
+{% load static %} {% block content %}
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-widget widget-user">
+      <div class="widget-user-header bg-primary">
+        <h3 class="widget-user-username">{{ client.name }}</h3>
+        <h5 class="widget-user-desc">{{ client.dpi }}</h5>
+      </div>
+      <div class="widget-user-image">
+        <img
+          class="img-circle elevation-2"
+          src="{% static '/dist/img/lab.webp' %}"
+          alt="User Avatar"
+        />
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header">13,000</h5>
+              <span class="description-text">Pruebas</span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <form method="POST" action="{% url 'store_client' client.id %}">
+      {% csrf_token %}
+      <div class="card-body">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter email"
+            value="{{ client.name }}"
+            name="name"
+          />
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'clients' %}" class="btn btn-danger">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

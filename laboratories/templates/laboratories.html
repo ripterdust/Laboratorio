@@ -18,10 +18,10 @@
         {% for laboratory in entity %}
         <tr>
           <td>
-            <a href="{% url 'laboratories' %}" class="btn-sm btn-danger mr-1">
+            <a href="{% url 'delete_lab' id=laboratory.id %}" class="btn-sm btn-danger mr-1">
               <i class="fa fa-trash"></i>
             </a>
-            <a href="{% url 'laboratories'  %}" class="btn-sm btn-primary">
+            <a href="{% url 'edit_lab' id=laboratory.id %}" class="btn-sm btn-primary">
               <i class="fa fa-edit"></i>
             </a>
           </td>
