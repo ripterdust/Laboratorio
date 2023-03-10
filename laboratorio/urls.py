@@ -24,5 +24,6 @@ urlpatterns = [
     path('clients/', include('clientes.urls')),
     path('auth/', kill_session, name='logout'),
     path('laboratories/', include('laboratories.urls')),
-    path('', include('dashaboard.urls'))
+    path('', include('dashaboard.urls')),
+    path('fields/', include('fields.urls'))
 ]
