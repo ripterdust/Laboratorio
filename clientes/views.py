@@ -26,3 +26,8 @@ def client_by_id(request, id):
 def delete(request, id):
     Clients.objects.get(id = id).delete()
     return redirect('/clients')
+
+def edit(request, id):
+    client = Clients.objects.get(id = id)
+
+    return HttpResponse(client)
