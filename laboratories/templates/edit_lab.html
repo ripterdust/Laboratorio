@@ -6,8 +6,8 @@
   <div class="col-md-4">
     <div class="card card-widget widget-user">
       <div class="widget-user-header bg-primary">
-        <h3 class="widget-user-username">{{ client.name }}</h3>
-        <h5 class="widget-user-desc">{{ client.dpi }}</h5>
+        <h3 class="widget-user-username">{{ lab.name }}</h3>
+        <h5 class="widget-user-desc">{{ lab.dpi }}</h5>
       </div>
       <div class="widget-user-image">
         <img
@@ -44,7 +44,7 @@
   </div>
 
   <div class="col-md-8">
-    <form method="POST" action="{% url 'store_client' client.id %}">
+    <form method="POST" action="{% url 'store_lab' lab.id %}">
       {% csrf_token %}
       <div class="card-body">
         <div class="form-group">
@@ -53,7 +53,7 @@
             type="text"
             class="form-control"
             placeholder="Enter email"
-            value="{{ client.name }}"
+            value="{{ lab.name }}"
             name="name"
           />
         </div>
@@ -61,7 +61,7 @@
 
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{% url 'clients' %}" class="btn btn-danger">Cancelar</a>
+        <a href="{% url 'laboratories' %}" class="btn btn-danger">Cancelar</a>
       </div>
     </form>
   </div>

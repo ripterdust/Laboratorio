@@ -28,6 +28,19 @@ def delete(request, id):
 def edit(request, id):
     laboratory = Laboratory.objects.get(id = id)
 
-    context = {'client': laboratory}
+    context = {'lab': laboratory}
 
     return render(request, 'edit_lab.html', context)
+
+def update(request, id):
+    laboratory = Laboratory.objects.get(id = id)
+
+@login_required
+def store(request, id):
+    form = request.POST
+
+    laboratory = Laboratory.objects.get(id = id)
+    laboratory.name = form.get('name')
+    laboratory.save()    
+
+    return redirect('/laboratories/')
