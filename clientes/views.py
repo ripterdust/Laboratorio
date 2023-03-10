@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from .models import Clients
 from django.core.paginator import Paginator
+import datetime
 
 # Create your views here.
 @login_required
@@ -30,4 +31,20 @@ def delete(request, id):
 def edit(request, id):
     client = Clients.objects.get(id = id)
 
-    return HttpResponse(client)
+    print(client.birth)
+    context = {'client': client}
+
+    return render(request, 'edit.html', context)
+
+def store(request, id):
+    form = request.POST
+
+    client = Clients.objects.get(id = id)
+    client.name = form.get('name')
+    client.dpi = form.get('dpi')
+    client.birth = form.get('birth')
+    client.email = form.get('email')
+    client.sex = form.get('sex')
+    client.save()    
+    return redirect('/clients/edit/45')
+
