@@ -23,5 +23,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('clients/', include('clientes.urls')),
     path('auth/', kill_session, name='logout'),
+    path('laboratories/', include('laboratories.urls')),
     path('', include('dashaboard.urls'))
 ]

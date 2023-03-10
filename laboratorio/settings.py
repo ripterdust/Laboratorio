@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clientes',
     'dashaboard',
-    'laboratories'
+    'laboratories',
+    'fields'
 ]
 
 STATICFILES_DIRS = [
