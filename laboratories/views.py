@@ -41,6 +41,7 @@ def store(request, id):
 
     laboratory = Laboratory.objects.get(id = id)
     laboratory.name = form.get('name')
+    laboratory.price = form.get('price')
     laboratory.save()    
 
     return redirect('/laboratories/')
