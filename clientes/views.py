@@ -21,13 +21,16 @@ def clients(request):
 
     return render(request, 'clientes.html', context)
 
+@login_required
 def client_by_id(request, id):
     return redirect('/clients')
 
+@login_required
 def delete(request, id):
     Clients.objects.get(id = id).delete()
     return redirect('/clients')
 
+@login_required
 def edit(request, id):
     client = Clients.objects.get(id = id)
 
@@ -36,6 +39,7 @@ def edit(request, id):
 
     return render(request, 'edit.html', context)
 
+@login_required
 def store(request, id):
     form = request.POST
 
