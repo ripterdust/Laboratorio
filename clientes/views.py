@@ -46,5 +46,5 @@ def store(request, id):
     client.email = form.get('email')
     client.sex = form.get('sex')
     client.save()    
-    return redirect('/clients/edit/45')
+    return redirect('/clients/')
 
