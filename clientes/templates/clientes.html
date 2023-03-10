@@ -8,6 +8,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>#</th>
           <th>Nombre completo</th>
           <th>Fecha de nacimiento</th>
           <th>CUI</th>
@@ -17,6 +18,11 @@
       <tbody>
         {% for client in entity %}
         <tr>
+          <td>
+            <a href="{% url 'remove_client' id=client.id %}"
+              ><i class="fa fa-trash text-danger"></i
+            ></a>
+          </td>
           <td>{{ client.name }}</td>
           <td>{{ client.birth }}</td>
           <td>{{ client.dpi }}</td>

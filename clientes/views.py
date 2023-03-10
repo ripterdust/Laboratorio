@@ -22,3 +22,7 @@ def clients(request):
 
 def client_by_id(request, id):
     return redirect('/clients')
+
+def delete(request, id):
+    Clients.objects.get(id = id).delete()
+    return redirect('/clients')
