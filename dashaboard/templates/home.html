@@ -81,30 +81,11 @@
 
   var options = {
     maintainAspectRatio: false,
-    responsive: true,
-    legend: {
-      display: false
-    },
-    scales: {
-      xAxes: [
-        {
-          gridLines: {
-            display: false
-          }
-        }
-      ],
-      yAxes: [
-        {
-          gridLines: {
-            display: false
-          }
-        }
-      ]
-    }
+    responsive: true
   };
 
   var areaChartData = {
-    type: 'line',
+    type: 'bar',
     options,
     data: {
       labels,
@@ -112,9 +93,8 @@
         {
           label: 'Ventas del día',
           data: values,
-          backgroundColor: 'rgba(60,141,188,0.9)',
-          borderColor: 'rgba(60,141,188,0.8)',
-          borderWidth: 1
+          backgroundColor: 'rgba(220,66,69, .8)',
+          borderColor: 'rgb(220,66,69)'
         }
       ]
     }
