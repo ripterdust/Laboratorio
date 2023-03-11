@@ -9,6 +9,7 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Número de órden</th>
           <th>Nombre del paciente</th>
           <th>Prueba realizada</th>
           <th>Precio</th>
@@ -26,11 +27,12 @@
               <i class="fa fa-edit"></i>
             </a>
           </td>
-          <td>{{ client.name }}</td>
-          <td>{{ client.birth }}</td>
-          <td>{{ client.dpi }}</td>
+          <td>{{ test.id }}</td>
+          <td>{{ test.patient.name }}</td>
+          <td>{{ test.lab.name }}</td>
+          <td>Q.{{ test.lab.price }}</td>
           <td>
-            <a href="edit" class="btn-sm btn-primary">
+            <a href="{% url 'fill_fields' test.id %}" class="btn-sm btn-primary">
               <i class="fas fa-edit"></i>
             </a>
           </td>
