@@ -81,7 +81,7 @@
       {% csrf_token %}
       <div class="card-body">
         <div class="form-group">
-          <label>Nombre completo</label>
+          <label>Agregar campo</label>
           <select class="form-control" placeholder="Ingresa el nombre del laboratorio"></select>
         </div>
       </div>
@@ -108,7 +108,7 @@
                 >
                   <i class="fa fa-trash"></i>
                 </a>
-                <a href="{% url 'remove_field' id=related_field.id %}" class="btn-sm btn-primary">
+                <a href="{% url 'update_field' id=related_field.id %}" class="btn-sm btn-primary">
                   <i class="fa fa-edit"></i>
                 </a>
               </td>

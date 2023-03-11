@@ -38,3 +38,11 @@ def remove(request, id):
     Field.objects.get(id = id).delete()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def edit_field(request, id):
+    field = Field.objects.get(id = id)
+
+    context = {'field': field}
+
+    return render(request, 'edit_field.html', context)
