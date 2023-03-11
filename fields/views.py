@@ -46,3 +46,19 @@ def edit_field(request, id):
     context = {'field': field, 'laboratories': laboratories}
 
     return render(request, 'edit_field.html', context)
+
+@login_required
+def store(request, id):
+    get = request.POST
+
+    field = Field.objects.get(id = id)
+    laboratory = Laboratory.objects.get( id = int(get.get('laboratory')))
+
+    field.laboratory = laboratory
+    field.name =  get.get('name')
+    field.measurment = get.get('measurment')
+    field.save()
+    
+    return redirect(f'/fields/edit/{id}')
+
+    
