@@ -29,7 +29,7 @@ def delete(request, id):
 def edit(request, id):
     laboratory = Laboratory.objects.get(id = id)
     related_fields = Field.objects.filter(laboratory=id)
-    context = {'lab': laboratory, 'related_fields': related_fields}
+    context = {'lab': laboratory, 'related_fields': related_fields, 'related_count': related_fields.count()}
 
     return render(request, 'edit_lab.html', context)
 
