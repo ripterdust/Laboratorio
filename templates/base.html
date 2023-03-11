@@ -21,6 +21,10 @@
     <!-- Theme style -->
     <link rel="stylesheet" href='{% static "/dist/css/adminlte.min.css" %}' />
     <script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -126,7 +130,9 @@
       <div class="content-wrapper">
         <!-- Main content -->
         <div class="content">
-          <div class="container-fluid pt-4">{% block content %} {% endblock %}</div>
+          <div class="container-fluid pt-4 animate__animated animate__fadeIn">
+            {% block content %} {% endblock %}
+          </div>
         </div>
       </div>
 
