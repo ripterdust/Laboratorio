@@ -112,7 +112,13 @@
                 </a>
               </div>
               <div class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{% url 'uncompleted_tests' %}" class="nav-link">
+                  <i class="nav-icon fas fa-virus-slash"></i>
+                  <p>Pruebas por completar</p>
+                </a>
+              </div>
+              <div class="nav-item">
+                <a href="{% url 'completed_tests' %}" class="nav-link">
                   <i class="nav-icon fas fa-virus"></i>
                   <p>Pruebas completadas</p>
                 </a>

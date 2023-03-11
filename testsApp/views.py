@@ -25,3 +25,35 @@ def index(request):
 @login_required
 def fill_fields(request, test_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def completed_tests(request):
+    tests = Test.objects.filter(completed=True).select_related('patient', 'lab')
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(tests, 10)
+        clients = paginator.page(page)
+    except:
+        return redirect('/tests')
+
+    context = { 'entity': tests, 'paginator': paginator }
+
+
+    return render(request, 'completed_tests.html', context)
+
+@login_required
+def uncompleted_tests(request):
+    tests = Test.objects.filter(completed=False).select_related('patient', 'lab')
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(tests, 10)
+        clients = paginator.page(page)
+    except:
+        return redirect('/tests')
+
+    context = { 'entity': tests, 'paginator': paginator }
+
+
+    return render(request, 'state_tests.html', context)
