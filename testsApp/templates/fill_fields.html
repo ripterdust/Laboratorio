@@ -27,7 +27,7 @@
 
           <div class="col-sm-4 border-right">
             <div class="description-block">
-              <h5 class="description-header">{{ related_count }}</h5>
+              <h5 class="description-header">{{ fields.count }}</h5>
               <span class="description-text">Campos</span>
             </div>
           </div>
@@ -45,7 +45,20 @@
   <div class="col-md-8">
     <form action="" class="card">
       <div class="card-header">Resultados del laboratorio</div>
-
+      <div class="card-body">
+        <input type="hidden" name="fields" id="fieldsList" />
+        {% for field in fields %}
+        <div class="form-group">
+          <label>{{ field.name }}</label>
+          <input
+            type="text"
+            class="form-control input_field"
+            placeholder="{{ field.name }}"
+            name="{{ field.name }}"
+          />
+        </div>
+        {% endfor %}
+      </div>
       <div class="card-footer">
         <button class="btn btn-primary mr-2" type="submit">Guardar</button>
         <a class="btn btn-danger" href="{% url 'tests' %}">Cancelar</a>
@@ -53,4 +66,26 @@
     </form>
   </div>
 </div>
+
+<script>
+  const elements = $('.input_field');
+  const fields_list = $('#fieldsList');
+
+  fields_list.val(JSON.stringify({}));
+
+  elements.map((elementKey) => {
+    const form_element = elements[elementKey];
+
+    $(form_element).keyup(({target}) => {
+      const actualJson = JSON.parse(fields_list.val());
+
+      const {value, name} = target;
+
+      actualJson[name] = value;
+      const strigifiedJson = JSON.stringify(actualJson);
+
+      fields_list.val(strigifiedJson);
+    });
+  });
+</script>
 {% endblock %}

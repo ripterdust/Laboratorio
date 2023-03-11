@@ -3,6 +3,7 @@ from .models import Test
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from fields.models import Field
 
 # Create your views here.
 @login_required
@@ -24,9 +25,10 @@ def index(request):
 
 @login_required
 def fill_fields(request, test_id):
-    test =  tests = Test.objects.select_related('patient', 'lab').get(id = test_id)
+    test = Test.objects.select_related('patient', 'lab').get(id = test_id)
+    fields = Field.objects.filter(laboratory=test.lab.id)
 
-    context = {'test': test}
+    context = {'test': test, 'fields': fields}
 
 
     return render(request, 'fill_fields.html', context)
