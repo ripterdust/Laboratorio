@@ -3,6 +3,8 @@ from .models import Field
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.core import serializers   
+from laboratories.models import Laboratory
+
 
 # Create your views here.
 @login_required
@@ -21,3 +23,11 @@ def index(request):
 
 
     return render(request, 'fields.html', context)
+
+def fields_by_lab_id(request, lab_id):
+    fields = Field.objects.select_related('laboratory').filter(laboratory = lab_id)
+    laboratory = Laboratory.objects.get(id = lab_id)
+
+    context = {'entity': fields, 'lab': laboratory}
+
+    return render(request, 'lab_fields.html', context)
