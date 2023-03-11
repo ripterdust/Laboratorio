@@ -1,3 +1,40 @@
-{% extends 'base.html' %}
-<div></div>
-{% block content %} {% endblock %}
+{% extends "base.html" %} {% block content %}
+<div class="card mt-4">
+  <div class="card-header">
+    <h3 class="card-title">Campos</h3>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Medida</th>
+          <th>Laboratorio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for field in entity %}
+        <tr>
+          <td>
+            <a href="{% url 'delete_lab' id=field.id %}" class="btn-sm btn-danger mr-1">
+              <i class="fa fa-trash"></i>
+            </a>
+            <a href="{% url 'edit_lab' id=field.id %}" class="btn-sm btn-primary">
+              <i class="fa fa-edit"></i>
+            </a>
+          </td>
+          <td>{{ field.name }}</td>
+          <td>{{ field.measurment }}</td>
+          <td>{{ field.laboratory.name }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer clearfix">{% include 'paginator.html' %}</div>
+  <div class="card-footer clearfix"></div>
+</div>
+{% endblock %}
