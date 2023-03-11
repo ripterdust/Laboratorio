@@ -24,7 +24,12 @@ def index(request):
 
 @login_required
 def fill_fields(request, test_id):
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    test =  tests = Test.objects.select_related('patient', 'lab').get(id = test_id)
+
+    context = {'test': test}
+
+
+    return render(request, 'fill_fields.html', context)
 
 @login_required
 def completed_tests(request):
