@@ -101,3 +101,12 @@ def save_uncompleted_test(request, test_id):
     test.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def send_pdf(request, test_id):
+    test = Test.objects.get(id = test_id)
+
+    if not test.completed:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

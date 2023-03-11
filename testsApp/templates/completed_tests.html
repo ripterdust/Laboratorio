@@ -19,8 +19,8 @@
         {% for test in entity %}
         <tr>
           <td>
-            <a href="{% url 'fill_fields' test.id %}" class="btn-sm btn-primary">
-              <i class="fas fa-edit"></i>
+            <a href="{% url 'send_pdf' test.id %}" class="btn-sm btn-primary">
+              <i class="fas fa-file-pdf"></i>
             </a>
           </td>
           <td>{{ test.id }}</td>
