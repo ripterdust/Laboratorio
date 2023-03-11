@@ -44,7 +44,7 @@
   </div>
 
   <div class="col-md-8">
-    <form method="POST" action="{% url 'store_client' client.id %}">
+    <form method="POST" action="{% url 'store_client' client.id %}" class="card">
       {% csrf_token %}
       <div class="card-body">
         <div class="form-group">

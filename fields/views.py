@@ -24,6 +24,7 @@ def index(request):
 
     return render(request, 'fields.html', context)
 
+@login_required
 def fields_by_lab_id(request, lab_id):
     fields = Field.objects.select_related('laboratory').filter(laboratory = lab_id)
     laboratory = Laboratory.objects.get(id = lab_id)
