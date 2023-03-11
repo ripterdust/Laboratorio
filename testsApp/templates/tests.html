@@ -8,7 +8,6 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>#</th>
           <th>Número de órden</th>
           <th>Nombre del paciente</th>
           <th>Prueba realizada</th>
@@ -18,14 +17,6 @@
       <tbody>
         {% for test in entity %}
         <tr>
-          <td>
-            <a href="{% url 'remove_client' id=test.id %}" class="btn-sm btn-danger mr-1">
-              <i class="fa fa-trash"></i>
-            </a>
-            <a href="{% url 'edit_client' id=test.id %}" class="btn-sm btn-primary">
-              <i class="fa fa-edit"></i>
-            </a>
-          </td>
           <td>{{ test.id }}</td>
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
