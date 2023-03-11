@@ -25,5 +25,6 @@ urlpatterns = [
     path('auth/', kill_session, name='logout'),
     path('laboratories/', include('laboratories.urls')),
     path('', include('dashaboard.urls')),
-    path('fields/', include('fields.urls'))
+    path('fields/', include('fields.urls')),
+    path('tests/', include('testsApp.urls'))
 ]
