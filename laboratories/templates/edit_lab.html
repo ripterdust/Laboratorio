@@ -75,8 +75,42 @@
       </div>
     </form>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-4">
+    <form class="card" method="POST" action="{% url 'store_by_edit_lab' lab.id %}">
+      {% csrf_token %}
+      <div class="card-header">Agregar un nuevo campo</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del campo"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Medida</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Tipo de medida"
+            name="measurment"
+            required
+          />
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-plus mr-2"></i>Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-8">
     <div class="card">
+      <div class="card-header">Campos</div>
       <div class="card-body">
         <table class="table table-bordered">
           <thead>

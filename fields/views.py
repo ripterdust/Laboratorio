@@ -61,4 +61,18 @@ def store(request, id):
     
     return redirect('/fields')
 
+@login_required
+def store_by_edit_lab(request, lab_id):
+    post = request.POST
+
+    lab = Laboratory.objects.get(id = lab_id)
+
+    field = Field()
+    field.name = post.get('name')
+    field.measurment = post.get('measurment')
+    field.laboratory = lab
+
+    field.save()
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     
