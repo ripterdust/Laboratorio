@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Laboratory
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from fields.models import Field
 
 # Create your views here.
 @login_required
@@ -27,13 +28,12 @@ def delete(request, id):
 @login_required
 def edit(request, id):
     laboratory = Laboratory.objects.get(id = id)
+    related_fields = Field.objects.filter(laboratory=id)
 
-    context = {'lab': laboratory}
+    context = {'lab': laboratory, 'related_fields': related_fields}
 
     return render(request, 'edit_lab.html', context)
 
-def update(request, id):
-    laboratory = Laboratory.objects.get(id = id)
 
 @login_required
 def store(request, id):

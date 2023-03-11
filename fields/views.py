@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.core import serializers   
 from laboratories.models import Laboratory
-
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 @login_required
@@ -32,3 +32,9 @@ def fields_by_lab_id(request, lab_id):
     context = {'entity': fields, 'lab': laboratory}
 
     return render(request, 'lab_fields.html', context)
+
+@login_required
+def remove(request, id):
+    Field.objects.get(id = id).delete()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

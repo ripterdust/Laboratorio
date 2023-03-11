@@ -69,12 +69,58 @@
           />
         </div>
       </div>
-
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{% url 'laboratories' %}" class="btn btn-danger">Cancelar</a>
       </div>
     </form>
+  </div>
+
+  <div class="col-md-4">
+    <form action="{{ lab.id }}" class="card">
+      {% csrf_token %}
+      <div class="card-body">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <select class="form-control" placeholder="Ingresa el nombre del laboratorio"></select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Nombre</td>
+              <td>Medida</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for related_field in related_fields %}
+            <tr>
+              <td>
+                <a
+                  href="{% url 'remove_field' id=related_field.id %}"
+                  class="btn-sm btn-danger mr-1"
+                >
+                  <i class="fa fa-trash"></i>
+                </a>
+                <a href="{% url 'remove_field' id=related_field.id %}" class="btn-sm btn-primary">
+                  <i class="fa fa-edit"></i>
+                </a>
+              </td>
+              <td>{{ related_field.name }}</td>
+              <td>{{ related_field.measurment }}</td>
+            </tr>
+
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
