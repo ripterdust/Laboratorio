@@ -42,7 +42,7 @@ def remove(request, id):
 @login_required
 def edit_field(request, id):
     field = Field.objects.get(id = id)
-
-    context = {'field': field}
+    laboratories = Laboratory.objects.all()
+    context = {'field': field, 'laboratories': laboratories}
 
     return render(request, 'edit_field.html', context)
