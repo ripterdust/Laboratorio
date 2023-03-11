@@ -64,3 +64,18 @@ def uncompleted_tests(request):
 
 
     return render(request, 'state_tests.html', context)
+
+
+@login_required
+def save_uncompleted_test(request, test_id):
+    post = request.POST
+
+    fields_string = post.get('fields')
+
+    fields_dict = eval(fields_string)
+    fields_list = list(fields_dict.keys())
+
+    for field in fields_list:
+        print(field)
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
