@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'clientes',
     'dashaboard',
     'laboratories',
-    'fields'
+    'fields',
+    'testsApp'
 ]
 
 STATICFILES_DIRS = [
