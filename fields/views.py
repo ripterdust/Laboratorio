@@ -59,6 +59,6 @@ def store(request, id):
     field.measurment = get.get('measurment')
     field.save()
     
-    return redirect(f'/fields/edit/{id}')
+    return redirect('/fields')
 
     
