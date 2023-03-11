@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% load static %}
+<div></div>
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-widget widget-user">
+      <div class="widget-user-header bg-primary">
+        <h3 class="widget-user-username">{{ test.patient.name }}</h3>
+        <h5 class="widget-user-desc">{{ test.patient.dpi }}</h5>
+      </div>
+      <div class="widget-user-image">
+        <img
+          class="img-circle elevation-2"
+          src="{% static '/dist/img/avatar5.png' %}"
+          alt="User Avatar"
+        />
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header">{{ related_count }}</h5>
+              <span class="description-text">Campos</span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <form action="" class="card">
+      <div class="card-header">Resultados del laboratorio</div>
+
+      <div class="card-footer">
+        <button class="btn btn-primary mr-2" type="submit">Guardar</button>
+        <a class="btn btn-danger" href="{% url 'tests' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
