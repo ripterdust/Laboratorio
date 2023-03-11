@@ -48,17 +48,36 @@
       <div class="card-header">Resultados del laboratorio</div>
       <div class="card-body">
         <input type="hidden" name="fields" id="fieldsList" />
-        {% for field in fields %}
-        <div class="form-group">
-          <label>{{ field.name }}</label>
-          <input
-            type="text"
-            class="form-control input_field"
-            placeholder="{{ field.name }}"
-            name="{{ field.name }}"
-          />
+        <div class="row">
+          {% for field in fields %}
+          <div class="form-group col-md-6">
+            <label>{{ field.name }}</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control input_field"
+                placeholder="{{ field.name }}"
+                name="{{ field.name }}"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">{{ field.measurment }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="">Observaciones</label>
+              <textarea
+                name="observaciones"
+                cols="30"
+                rows="5"
+                class="form-control input_field"
+              ></textarea>
+            </div>
+          </div>
         </div>
-        {% endfor %}
       </div>
       <div class="card-footer">
         <button class="btn btn-primary mr-2" type="submit">Guardar</button>
