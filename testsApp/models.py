@@ -6,4 +6,5 @@ import datetime
 class Test(models.Model):
     patient = models.ForeignKey(Clients, on_delete=models.PROTECT)
     lab = models.ForeignKey(Laboratory, on_delete=models.PROTECT)
+    completed = models.BooleanField(default=False)
     created_at = models.DateField(default=datetime.date.today)
