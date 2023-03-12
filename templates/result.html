@@ -44,6 +44,14 @@
       font-weight: bold;
       font-size: 13px;
     }
+
+    .big_fields {
+      font-size: 14px;
+    }
+
+    .big_text {
+      font-size: 15px;
+    }
   </style>
   <body>
     <div class="title">
@@ -70,7 +78,7 @@
             <td>Rango de referencia</td>
             <td>Unidades</td>
           </tr>
-          <tbody>
+          <tbody class="big_fields">
             {% for field in fields %}
             <tr>
               <td>{{ field.field.name }}</td>
@@ -83,7 +91,7 @@
         </table>
       </div>
 
-      <div class="title mt2">Comentarios: {{ test.comment }}</div>
+      <div class="title mt2 big_text">Comentarios: {{ test.comment }}</div>
     </div>
   </body>
 </html>
