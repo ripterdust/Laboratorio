@@ -7,4 +7,5 @@ class Clients(models.Model):
     dpi = models.CharField(max_length=20, null=False, default='N/A')
     email = models.EmailField(default='n/a', null=False)
     sex = models.IntegerField(default=1)
+    nit = models.CharField(max_length=20, default='N/A')
     created_at = models.DateField(auto_now=True)
