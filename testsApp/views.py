@@ -99,9 +99,10 @@ def save_uncompleted_test(request, test_id):
 
     
     test.completed = True
+    test.comment = post.get('comment')
     test.save()
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponseRedirect('/tests/completed')
 
 @login_required
 def send_pdf(request, test_id):
