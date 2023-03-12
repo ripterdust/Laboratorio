@@ -35,7 +35,15 @@
           <label for="">Paciente</label>
           <select name="client" id="" class="from-control select2" style="width: 100%">
             {% for client in clients %}
-            <option value="{{ client.id }}">{{ client.name }}-{{ client.dpi }}</option>
+            <option value="{{ client.id }}">{{ client.name }} - {{ client.dpi }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Laboratorio</label>
+          <select name="lab" id="" class="from-control select2" style="width: 100%">
+            {% for lab in laboratories %}
+            <option value="{{ lab.id }}">{{ lab.name }}</option>
             {% endfor %}
           </select>
         </div>
@@ -45,6 +53,6 @@
 </div>
 <script src="{% static '/plugins/select2/js/select2.full.min.js' %}"></script>
 <script>
-  $('.select2').select2();
+  $('.select2').select2({theme: 'bootstrap4'});
 </script>
 {% endblock %}
