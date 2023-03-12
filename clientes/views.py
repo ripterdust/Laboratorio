@@ -65,3 +65,21 @@ def history(request, id):
     }
 
     return render(request, 'history.html', context)
+
+def new_client(request):
+
+    return render(request, 'new_client.html')
+
+def save_new_patient(request):
+    post = request.POST.get
+
+    client = Clients()
+    client.name = post('name')
+    client.email = post('email')
+    client.dpi = post('dpi')
+    client.birth = post('birth')
+    client.sex = post('sex')
+
+    client.save()
+
+    return redirect('/clients')
