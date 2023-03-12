@@ -141,6 +141,7 @@ def new_test(request):
 
     return render(request, 'new_test.html', context)
 
+@login_required
 def store_new_test(request):
     post = request.POST.get
 
@@ -156,3 +157,14 @@ def store_new_test(request):
     test.save()
 
     return redirect('/tests/uncompleted/')
+
+@login_required
+def delete_test(request, test_id):
+    test = Test.objects.get(id = test_id)
+
+    if not test.completed:
+        test.delete()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    
+

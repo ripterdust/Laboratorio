@@ -20,7 +20,7 @@
         {% for test in entity %}
         <tr>
           <td>
-            <a href="{% url 'remove_client' id=test.id %}" class="btn-sm btn-danger mr-1">
+            <a href="{% url 'delete_test' test.id %}" class="btn-sm btn-danger mr-1">
               <i class="fa fa-trash"></i>
             </a>
           </td>
