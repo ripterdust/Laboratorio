@@ -38,9 +38,9 @@ def delete(request, id):
 @login_required
 def edit(request, id):
     client = Clients.objects.get(id = id)
-
-    print(client.birth)
-    context = {'client': client}
+    tests = Test.objects.filter(patient=id).count()
+    
+    context = {'client': client, 'tests': tests}
 
     return render(request, 'edit.html', context)
 
