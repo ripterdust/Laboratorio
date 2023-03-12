@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Test
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse, HttpResponse
 from fields.models import Field
 from testResultFields.models import TestResultField
+from laboratorio.utils import render_to_pdf
 
 # Create your views here.
 @login_required
@@ -104,9 +105,23 @@ def save_uncompleted_test(request, test_id):
 
 @login_required
 def send_pdf(request, test_id):
-    test = Test.objects.get(id = test_id)
+    test = Test.objects.select_related('patient', 'lab').get(id = test_id)
 
     if not test.completed:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    fields = TestResultField.objects.filter(test=test_id).select_related('field')
+
+    context = {
+        'lab_name': 'Nombre laboratorio',
+        'address': '52 avenida a 6-23 residenciales naciones unidas 2, zona 10 villa nueva',
+        'phone': '35420928',
+        'test': test,
+        'fields': fields
+    }
+
+    pdf = render_to_pdf('result.html', context)
+
+    return HttpResponse(pdf, content_type='application/pdf')
+
+    

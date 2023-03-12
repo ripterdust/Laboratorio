@@ -8,25 +8,25 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>#</th>
           <th>Número de órden</th>
           <th>Nombre del paciente</th>
           <th>Prueba realizada</th>
           <th>Precio</th>
+          <th>PDF</th>
         </tr>
       </thead>
       <tbody>
         {% for test in entity %}
         <tr>
-          <td>
-            <a href="{% url 'send_pdf' test.id %}" class="btn-sm btn-primary">
-              <i class="fas fa-file-pdf"></i>
-            </a>
-          </td>
           <td>{{ test.id }}</td>
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
           <td>Q.{{ test.lab.price }}</td>
+          <td>
+            <a href="{% url 'send_pdf' test.id %}" target="_blank" class="btn-sm btn-primary">
+              <i class="fas fa-file-pdf"></i>
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

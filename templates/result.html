@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .title {
+      width: 100%;
+    }
+
+    .h1,
+    h1 {
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+
+    .mt {
+      margin-top: 1em;
+    }
+
+    .r {
+      text-align: right;
+    }
+
+    .table-title td {
+      text-align: center;
+      font-size: 15px;
+      text-decoration: underline;
+    }
+
+    .center {
+      text-align: center;
+    }
+    .mt2 {
+      margin-top: 2em;
+    }
+  </style>
+  <body>
+    <div class="title">
+      <center>
+        <div class="h1">{{ lab_name }}</div>
+        <div class="info">{{ address }}</div>
+        <div class="info">Tel: {{ phone }}</div>
+      </center>
+
+      <div class="title mt">
+        <table>
+          <tr>
+            <td>Nombre del paciente: {{ test.patient.name }}</td>
+            <td class="r">Fecha: {{ test.created_at }}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="title mt2">
+        <table class="table">
+          <tr class="table-title">
+            <td>Campo</td>
+            <td>Resultados</td>
+            <td>Rango de referencia</td>
+            <td>Unidades</td>
+          </tr>
+          <tbody>
+            {% for field in fields %}
+            <tr>
+              <td>{{ field.field.name }}</td>
+              <td class="center">{{ field.result }}</td>
+              <td class="center">sdf</td>
+              <td class="center">{{ field.field.measurment }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
