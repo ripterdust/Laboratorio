@@ -31,7 +31,7 @@
             </a>
           </td>
           <td>{{ laboratory.name }}</td>
-          <td>Q.{{ laboratory.price }}</td>
+          <td>Q.{{ laboratory.price|stringformat:'.2f' }}</td>
           <td><a href="{% url 'fields_by_lab' laboratory.id %}">Ver campos</a></td>
         </tr>
         {% endfor %}
