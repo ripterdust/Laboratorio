@@ -44,3 +44,22 @@ def store(request, id):
     laboratory.save()    
 
     return redirect('/laboratories/')
+
+
+@login_required
+def new_lab(request):
+    return render(request, 'new_lab.html')
+
+def store_lab(request):
+    post = request.POST
+
+    laboratory = Laboratory()
+
+    laboratory.name = post.get('name')
+    laboratory.price = post.get('price')
+
+    laboratory.save()
+
+    lab_id = laboratory.id
+
+    return redirect(f'/laboratories/edit/{lab_id}')
