@@ -57,6 +57,7 @@ def store(request, id):
     field.laboratory = laboratory
     field.name =  get.get('name')
     field.measurment = get.get('measurment')
+    field.reference = get.get('reference')
     field.save()
     
     return redirect('/fields')
@@ -71,7 +72,7 @@ def store_by_edit_lab(request, lab_id):
     field.name = post.get('name')
     field.measurment = post.get('measurment')
     field.laboratory = lab
-
+    field.reference = post.get('reference')
     field.save()
     
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

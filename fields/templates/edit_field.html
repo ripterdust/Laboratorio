@@ -60,6 +60,16 @@
           />
         </div>
         <div class="form-group">
+          <label>Referencia</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Medida"
+            value="{{ field.reference }}"
+            name="reference"
+          />
+        </div>
+        <div class="form-group">
           <label>Laboratorio</label>
           <select name="laboratory" id="" class="form-control">
             {% for laboratorie in laboratories %} {% if laboratorie.id == field.laboratory.id %}

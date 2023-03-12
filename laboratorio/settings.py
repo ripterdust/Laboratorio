@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'clientes',
     'dashaboard',
     'laboratories',
@@ -114,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'es-US'
 
 TIME_ZONE = 'UTC'
 
@@ -122,6 +123,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_THOUSAND_SEPARATOR = True
+
+DECIMAL_SEPARATOR = "."
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
