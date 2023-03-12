@@ -125,4 +125,6 @@ def send_pdf(request, test_id):
 
     return HttpResponse(pdf, content_type='application/pdf')
 
-    
+@login_required
+def new_test(request):
+    return render(request, 'new_test.html')

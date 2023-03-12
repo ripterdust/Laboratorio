@@ -23,9 +23,6 @@
             <a href="{% url 'remove_client' id=test.id %}" class="btn-sm btn-danger mr-1">
               <i class="fa fa-trash"></i>
             </a>
-            <a href="{% url 'edit_client' id=test.id %}" class="btn-sm btn-primary">
-              <i class="fa fa-edit"></i>
-            </a>
           </td>
           <td>{{ test.id }}</td>
           <td>{{ test.patient.name }}</td>
