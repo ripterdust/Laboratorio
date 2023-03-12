@@ -44,7 +44,7 @@ def fill_fields(request, test_id):
 
 @login_required
 def completed_tests(request):
-    tests = Test.objects.filter(completed=True).select_related('patient', 'lab')
+    tests = Test.objects.filter(completed=True).order_by('-created_at').select_related('patient', 'lab')
     page = request.GET.get('page', 1)
 
     try:
@@ -60,7 +60,7 @@ def completed_tests(request):
 
 @login_required
 def uncompleted_tests(request):
-    tests = Test.objects.filter(completed=False).select_related('patient', 'lab')
+    tests = Test.objects.filter(completed=False).order_by('-created_at').select_related('patient', 'lab')
     page = request.GET.get('page', 1)
 
     try:
