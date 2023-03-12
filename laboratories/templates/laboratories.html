@@ -2,8 +2,13 @@
 <div class="card mt-4">
   <div class="card-header">
     <h3 class="card-title">Laboratorios</h3>
+    <div class="card-tools">
+      <a href="{% url 'new_lab' %}" class="btn-sm btn-block btn-primary">
+        <i class="fas fa-plus"></i>
+        Nuevo laboratorio
+      </a>
+    </div>
   </div>
-
   <div class="card-body">
     <table class="table table-bordered">
       <thead>
