@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Clients
 from django.core.paginator import Paginator
@@ -28,8 +28,12 @@ def client_by_id(request, id):
 
 @login_required
 def delete(request, id):
-    Clients.objects.get(id = id).delete()
-    return redirect('/clients')
+    try:
+        Clients.objects.get(id = id).delete()
+        return redirect('/clients')
+    except:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 
 @login_required
 def edit(request, id):
