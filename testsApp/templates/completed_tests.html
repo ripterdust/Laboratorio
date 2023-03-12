@@ -12,6 +12,7 @@
           <th>Nombre del paciente</th>
           <th>Prueba realizada</th>
           <th>Precio</th>
+          <th>Fecha de realización</th>
           <th>PDF</th>
         </tr>
       </thead>
@@ -22,6 +23,7 @@
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
           <td>Q.{{ test.lab.price }}</td>
+          <td>{{ test.created_at }}</td>
           <td>
             <a href="{% url 'send_pdf' test.id %}" target="_blank" class="btn-sm btn-primary">
               <i class="fas fa-file-pdf"></i>

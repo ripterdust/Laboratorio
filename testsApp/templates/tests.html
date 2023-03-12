@@ -12,6 +12,7 @@
           <th>Nombre del paciente</th>
           <th>Prueba realizada</th>
           <th>Precio</th>
+          <th>Fecha</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
           <td>Q.{{ test.lab.price }}</td>
+          <td>{{ test.created_at }}</td>
         </tr>
         {% endfor %}
       </tbody>
