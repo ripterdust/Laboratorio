@@ -1,1 +1,50 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% endblock %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-widget widget-user">
+      <div class="widget-user-header bg-info">
+        <h3 class="widget-user-username"></h3>
+        <h5 class="widget-user-desc">Nueva prueba</h5>
+      </div>
+      <div class="widget-user-image">
+        <img
+          class="img-circle elevation-2"
+          src="{% static '/dist/img/lab.webp' %}"
+          alt="User Avatar"
+        />
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-12 border-right">
+            <div class="description-block">
+              <h5 class="description-header">{{ laboratories.count }}</h5>
+              <span class="description-text">laboratorios disponibles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <form method="POST" class="card">
+      <div class="card-header">Nueva prueba</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="">Paciente</label>
+          <select name="client" id="" class="from-control select2" style="width: 100%">
+            {% for client in clients %}
+            <option value="{{ client.id }}">{{ client.name }}-{{ client.dpi }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="{% static '/plugins/select2/js/select2.full.min.js' %}"></script>
+<script>
+  $('.select2').select2();
+</script>
+{% endblock %}

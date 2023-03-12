@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect, FileResponse, HttpResponse
 from fields.models import Field
 from testResultFields.models import TestResultField
 from laboratorio.utils import render_to_pdf
+from clientes.models import Clients
+from laboratories.models import Laboratory
+
 
 # Create your views here.
 @login_required
@@ -127,4 +130,12 @@ def send_pdf(request, test_id):
 
 @login_required
 def new_test(request):
-    return render(request, 'new_test.html')
+    clients = Clients.objects.all().only('name', 'dpi', 'id')
+    laboratories = Laboratory.objects.all().only('name', 'id', 'price')
+
+    context = {
+        'clients': clients,
+        'laboratories': laboratories
+    }
+
+    return render(request, 'new_test.html', context)
