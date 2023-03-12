@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-widget widget-user">
+      <div class="widget-user-header bg-info">
+        <h3 class="widget-user-username">{{ client.name }}</h3>
+        <h5 class="widget-user-desc">{{ client.dpi }}</h5>
+      </div>
+      <div class="widget-user-image">
+        <img
+          class="img-circle elevation-2"
+          src="{% static '/dist/img/avatar5.png' %}"
+          alt="User Avatar"
+        />
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <h5 class="description-header">13,000</h5>
+              <span class="description-text">Pruebas</span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="description-block">
+              <h5 class="description-header"></h5>
+              <span class="description-text"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      {% for test in tests %}
+      <div class="col-md-4">
+        <div class="card text-decoration-none">
+          <div class="card-header">{{ test.lab.name }}</div>
+          <div class="card-body">
+            <div class="center">{{ test.created_at }}</div>
+            <div class="mt-2">
+              Estado: {% if test.completed %}
+              <div class="badge badge-success">Completado</div>
+              {% else %}
+              <div class="badge badge-danger">Incompleto</div>
+
+              {% endif %}
+            </div>
+          </div>
+          {% if test.completed %}
+          <div class="card-footer">
+            <a target="_blank" href="{% url 'send_pdf' test.id %}" class="btn-sm btn-info">
+              Ver examen
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

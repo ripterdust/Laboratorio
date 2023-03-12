@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Clients
 from django.core.paginator import Paginator
 import datetime
+from testsApp.models import Test
 
 # Create your views here.
 @login_required
@@ -52,3 +53,15 @@ def store(request, id):
     client.save()    
     return redirect('/clients/')
 
+
+@login_required
+def history(request, id):
+    client = Clients.objects.get(id = id)
+    tests = Test.objects.filter(patient=id).select_related('lab')
+    
+    context = {
+        'client': client,
+        'tests': tests
+    }
+
+    return render(request, 'history.html', context)

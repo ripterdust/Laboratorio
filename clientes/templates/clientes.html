@@ -29,7 +29,7 @@
           <td>{{ client.name }}</td>
           <td>{{ client.birth }}</td>
           <td>{{ client.dpi }}</td>
-          <td><a href="{% url 'client' id=client.id %}">Ver historial</a></td>
+          <td><a href="{% url 'patient_history' id=client.id %}">Ver historial</a></td>
         </tr>
         {% endfor %}
       </tbody>
