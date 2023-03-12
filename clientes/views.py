@@ -9,7 +9,17 @@ from testsApp.models import Test
 # Create your views here.
 @login_required
 def clients(request):
-    clients = Clients.objects.all()
+    clients = []
+
+    search= ''
+
+    if request.method == 'POST':
+        search = request.POST.get('search')
+
+        clients = Clients.objects.filter(name__contains=search)
+
+    else:
+        clients = Clients.objects.all()
     page = request.GET.get('page', 1)
 
     try:
@@ -18,7 +28,7 @@ def clients(request):
     except:
         return redirect('/clients')
 
-    context = { 'entity': clients, 'paginator': paginator }
+    context = { 'entity': clients, 'paginator': paginator, 'search': search }
 
     return render(request, 'clientes.html', context)
 

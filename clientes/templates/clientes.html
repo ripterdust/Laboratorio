@@ -1,4 +1,32 @@
 {% extends "base.html" %} {% block content %}
+
+<div class="row">
+  <div class="col-md-4">
+    <form class="card" method="POST">
+      {% csrf_token %}
+      <div class="card-header">Buscar</div>
+      <div class="card-body">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            placeholder="Buscar"
+            value="{{ search }}"
+          />
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="submit" class="btn-sm btn-primary" value="Buscar" />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="card mt-4">
   <div class="card-header">
     <h3 class="card-title">Pacientes</h3>
