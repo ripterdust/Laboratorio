@@ -1,5 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,6 +28,7 @@
 
     .table-title td {
       text-align: center;
+      font-weight: bold;
       font-size: 15px;
       text-decoration: underline;
     }
@@ -36,6 +38,11 @@
     }
     .mt2 {
       margin-top: 2em;
+    }
+
+    .title-table td {
+      font-weight: bold;
+      font-size: 13px;
     }
   </style>
   <body>
@@ -47,7 +54,7 @@
       </center>
 
       <div class="title mt">
-        <table>
+        <table class="title-table">
           <tr>
             <td>Nombre del paciente: {{ test.patient.name }}</td>
             <td class="r">Fecha: {{ test.created_at }}</td>
@@ -68,7 +75,7 @@
             <tr>
               <td>{{ field.field.name }}</td>
               <td class="center">{{ field.result }}</td>
-              <td class="center">sdf</td>
+              <td class="center">{{ field.field.reference }}</td>
               <td class="center">{{ field.field.measurment }}</td>
             </tr>
             {% endfor %}
