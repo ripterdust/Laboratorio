@@ -22,7 +22,7 @@
           <td>{{ test.id }}</td>
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
-          <td>Q.{{ test.lab.price }}</td>
+          <td>Q.{{ test.lab.price|stringformat:'.2f' }}</td>
           <td>{{ test.created_at }}</td>
           <td>
             <a href="{% url 'send_pdf' test.id %}" target="_blank" class="btn-sm btn-primary">

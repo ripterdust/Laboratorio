@@ -21,7 +21,7 @@
           <td>{{ test.id }}</td>
           <td>{{ test.patient.name }}</td>
           <td>{{ test.lab.name }}</td>
-          <td>Q.{{ test.lab.price }}</td>
+          <td>Q.{{ test.lab.price|stringformat:'.2f' }}</td>
           <td>{{ test.created_at }}</td>
         </tr>
         {% endfor %}

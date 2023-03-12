@@ -14,7 +14,7 @@ from laboratories.models import Laboratory
 @login_required
 def index(request):
 
-    tests = Test.objects.select_related('patient', 'lab')
+    tests = Test.objects.order_by('-created_at').select_related('patient', 'lab')
     page = request.GET.get('page', 1)
 
     try:
