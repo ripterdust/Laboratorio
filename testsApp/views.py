@@ -130,6 +130,7 @@ def send_pdf(request, test_id):
 
 @login_required
 def new_test(request):
+
     clients = Clients.objects.all().only('name', 'dpi', 'id')
     laboratories = Laboratory.objects.all().only('name', 'id', 'price')
 
@@ -139,3 +140,19 @@ def new_test(request):
     }
 
     return render(request, 'new_test.html', context)
+
+def store_new_test(request):
+    post = request.POST.get
+
+    patient = post('client')
+    lab = post('lab')
+
+    laboratory = Laboratory.objects.get(id=lab)
+    client = Clients.objects.get(id=patient)
+    test = Test()
+    test.lab = laboratory
+    test.patient = client
+
+    test.save()
+
+    return redirect('/tests/uncompleted/')

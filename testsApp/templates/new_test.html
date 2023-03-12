@@ -28,7 +28,8 @@
   </div>
 
   <div class="col-md-8">
-    <form method="POST" class="card">
+    <form method="POST" action="{% url 'store_new_test' %}" class="card">
+      {% csrf_token %}
       <div class="card-header">Nueva prueba</div>
       <div class="card-body">
         <div class="form-group">
@@ -47,6 +48,9 @@
             {% endfor %}
           </select>
         </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </form>
   </div>
