@@ -46,6 +46,7 @@
           <th>Nombre completo</th>
           <th>Fecha de nacimiento</th>
           <th>CUI</th>
+          <th>Celular</th>
           <th>NIT</th>
           <th>Exámenes</th>
         </tr>
@@ -64,6 +65,7 @@
           <td>{{ client.name }}</td>
           <td>{{ client.birth }}</td>
           <td>{{ client.dpi }}</td>
+          <td>{{ client.phone }}</td>
           <td>{{ client.nit }}</td>
           <td><a href="{% url 'patient_history' id=client.id %}">Ver historial</a></td>
         </tr>

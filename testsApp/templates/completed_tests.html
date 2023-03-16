@@ -28,6 +28,14 @@
             <a href="{% url 'send_pdf' test.id %}" target="_blank" class="btn-sm btn-primary">
               <i class="fas fa-file-pdf"></i>
             </a>
+            <a
+              class="ml-1 btn-sm btn-success whatsappButton"
+              url="{% url 'send_pdf' test.id %}"
+              phone="{{ test.patient.phone }}"
+              testName="{{ test.lab.name }}"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
           </td>
         </tr>
         {% endfor %}
@@ -38,4 +46,22 @@
   <div class="card-footer clearfix">{% include 'paginator.html' %}</div>
   <div class="card-footer clearfix"></div>
 </div>
+
+<script>
+  const host = window.location.origin;
+
+  const whatsappButtons = $('.whatsappButton');
+
+  whatsappButtons.click((e) => {
+    const btn = $(e.currentTarget);
+
+    const pdfAttr = btn.attr('url');
+    const patientPhone = btn.attr('phone');
+    const testName = btn.attr('testName');
+
+    const url = `wa.me/502${patientPhone}?text=Los resultados de tu ${testName} ya están disponibles en ${host}${pdfAttr}`;
+
+    console.log(url);
+  });
+</script>
 {% endblock %}

@@ -65,6 +65,7 @@ def store(request, id):
     client.email = form.get('email')
     client.sex = form.get('sex')
     client.nit = form.get('nit')
+    client.phone = form.get('phone')
     client.save()    
     return redirect('/clients/')
 
@@ -95,7 +96,7 @@ def save_new_patient(request):
     client.birth = post('birth')
     client.sex = post('sex')
     client.nit = post('nit')
-
+    client.phone = post('phone')
     client.save()
 
     return redirect('/clients')
