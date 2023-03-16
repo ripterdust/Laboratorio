@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7#3yi+r0$v7+2e2j8*p$vp*k6h6(hp-62ea^7%%cljpdwuq9+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'testResultFields'
 ]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), BASE_DIR / 'static', '/var/www/static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
