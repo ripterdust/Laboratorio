@@ -5,3 +5,6 @@ class Laboratory(models.Model):
 
     name = models.CharField(max_length=255, null=False)
     price = models.FloatField(default=0.00, null=False)
+
+    def __str__(self)->str:
+        return self.name

@@ -9,3 +9,6 @@ class Clients(models.Model):
     sex = models.IntegerField(default=1)
     nit = models.CharField(max_length=20, default='N/A')
     created_at = models.DateField(auto_now=True)
+
+    def __str__(self)->str:
+        return f'{self.name}-{self.dpi}'

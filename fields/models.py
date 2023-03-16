@@ -6,3 +6,7 @@ class Field(models.Model):
     measurment = models.CharField(max_length=255)
     reference = models.CharField(max_length=255, default="No hay referencia")
     laboratory = models.ForeignKey(Laboratory, on_delete=models.CASCADE)
+
+
+    def __str__(self)->str:
+        return self.name

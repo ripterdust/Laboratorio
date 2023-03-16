@@ -9,3 +9,6 @@ class Test(models.Model):
     completed = models.BooleanField(default=False)
     comment = models.CharField(default='No hay comentarios', max_length=255)
     created_at = models.DateField(default=datetime.date.today)
+
+    def __str__(self)->str:
+        return self.lab.name
