@@ -59,9 +59,10 @@
     const patientPhone = btn.attr('phone');
     const testName = btn.attr('testName');
 
-    const url = `wa.me/502${patientPhone}?text=Los resultados de tu ${testName} ya están disponibles en ${host}${pdfAttr}`;
+    const url = `https://wa.me/502${patientPhone}?text=Los resultados de tu ${testName} ya están disponibles en ${host}${pdfAttr}`;
 
-    console.log(url);
+    const win = window.open(url, '_blank');
+    win.focus();
   });
 </script>
 {% endblock %}
