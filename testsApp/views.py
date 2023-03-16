@@ -107,7 +107,6 @@ def save_uncompleted_test(request, test_id):
 
     return HttpResponseRedirect('/tests/completed')
 
-@login_required
 def send_pdf(request, test_id):
     test = Test.objects.select_related('patient', 'lab').get(id = test_id)
 
