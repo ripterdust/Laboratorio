@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7#3yi+r0$v7+2e2j8*p$vp*k6h6(hp-62ea^7%%cljpdwuq9+r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), 
 ]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
