@@ -10,11 +10,7 @@
         <h5 class="widget-user-desc">{{ client.dpi }}</h5>
       </div>
       <div class="widget-user-image">
-        <img
-          class="img-circle elevation-2"
-          src="{% static '/dist/img/avatar5.png' %}"
-          alt="User Avatar"
-        />
+        <img class="img-circle elevation-2" src="{% static '/dist/img/avatar5.png' %}" alt="User Avatar" />
       </div>
       <div class="card-footer">
         <div class="row">
@@ -41,6 +37,7 @@
             placeholder="Enter email"
             value="{{ client.name }}"
             name="name"
+            required
           />
         </div>
         <div class="form-group">
@@ -52,6 +49,7 @@
             placeholder="Enter email"
             value="{{ client.email }}"
             name="email"
+            required
           />
         </div>
         <div class="form-group">
@@ -62,6 +60,7 @@
             placeholder="Ingresa tu dpi"
             value="{{ client.dpi }}"
             name="dpi"
+            required
           />
         </div>
         <div class="form-group">
@@ -94,11 +93,12 @@
             placeholder="Ingresa tu dpi"
             value="{{ client.birth |date:'Y-m-d' }}"
             name="birth"
+            required
           />
         </div>
         <div class="form-group">
           <label>Sexo</label>
-          <select name="sex" id="" class="form-control">
+          <select name="sex" id="" class="form-control" required>
             {% if client.sex == 1 %}
             <option value="1" selected>Masculino</option>
             <option value="2">Femenino</option>
