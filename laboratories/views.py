@@ -47,12 +47,19 @@ def edit(request, id):
 
 @login_required
 def store(request, id):
-    form = request.POST
+    try:
 
-    laboratory = Laboratory.objects.get(id=id)
-    laboratory.name = form.get('name')
-    laboratory.price = form.get('price')
-    laboratory.save()
+        form = request.POST
+
+        laboratory = Laboratory.objects.get(id=id)
+        laboratory.name = form.get('name')
+        laboratory.price = form.get('price')
+        laboratory.save()
+
+        messages.success(request, 'Laboratorio editado correctamente!')
+
+    except:
+        messages.error(request, 'Error al editar el laboratorio')
 
     return redirect('/laboratories/')
 
