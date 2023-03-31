@@ -81,4 +81,6 @@ def store_lab(request):
 
     lab_id = laboratory.id
 
+    messages.success(request, 'Laboratorio creado correctamente!')
+
     return redirect(f'/laboratories/edit/{lab_id}')
