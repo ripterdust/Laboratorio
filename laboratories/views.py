@@ -31,6 +31,7 @@ def delete(request, id):
         messages.success(request, 'Laboratorio eliminado correctamente!')
         return redirect('/laboratories')
     except:
+        messages.error(request, 'No se pudo eliminar el laboratorio')
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 

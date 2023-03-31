@@ -7,10 +7,7 @@
     <title>Gestión de laboratorio</title>
     <link rel="shortcut icon" href="{% static '/favicon.ico' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static '/plugins/select2/css/select2.min.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static '/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}"
-    />
+    <link rel="stylesheet" href="{% static '/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}" />
     <!-- Google Font: Source Sans Pro -->
     <link
       rel="stylesheet"
@@ -19,17 +16,15 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href='{% static "/plugins/fontawesome-free/css/all.min.css" %}' />
     <!-- IonIcons -->
-    <link
-      rel="stylesheet"
-      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
-    />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href='{% static "/dist/css/adminlte.min.css" %}' />
     <script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="{% static '/plugins/toastr/toastr.min.css' %}" />
+    <script>
+      const messages = [];
+    </script>
   </head>
   <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -38,9 +33,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
-              ><i class="fas fa-bars"></i
-            ></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="{% url 'dashboard' %}" class="nav-link">Inicio</a>
@@ -73,12 +66,7 @@
         <div class="sidebar">
           <!-- Sidebar Menu -->
           <nav class="mt-2">
-            <ul
-              class="nav nav-pills nav-sidebar flex-column"
-              data-widget="treeview"
-              role="menu"
-              data-accordion="false"
-            >
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'dashboard' %}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -141,9 +129,7 @@
       <div class="content-wrapper">
         <!-- Main content -->
         <div class="content">
-          <div class="container-fluid pt-4 animate__animated animate__fadeIn">
-            {% block content %} {% endblock %}
-          </div>
+          <div class="container-fluid pt-4 animate__animated animate__fadeIn">{% block content %} {% endblock %}</div>
         </div>
       </div>
 
@@ -164,5 +150,39 @@
     <script src="{% static '/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <!-- AdminLTE -->
     <script src="{% static '/dist/js/adminlte.js'%}"></script>
+    <script src="{% static '/plugins/toastr/toastr.min.js' %}"></script>
+
+    <script>
+
+
+      {% if messages %}
+        let msg = {}
+        {% for message in messages %}
+
+          msg = {
+            type: '{{ message.tags }}',
+            message: '{{ message }}'}
+
+          messages.push(msg)
+
+        {% endfor %}
+      {% endif %}
+
+      const types = {
+        error: toastr.error,
+        success: toastr.success
+      }
+
+      messages.map(msg =>{
+
+        console.log(msg);
+        types[msg.type](msg.message, '', {
+          timeOut: 5000,
+          closeButton: true,
+          progressBar: true,
+          positionClass: 'toast-top-right'
+        })
+      })
+    </script>
   </body>
 </html>
