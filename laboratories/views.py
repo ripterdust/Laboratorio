@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
 from .models import Laboratory
-from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
-from fields.models import Field
-from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from fields.models import Field
 # Create your views here.
 
 
